@@ -1,4 +1,4 @@
-# Shopping Basket
+# Startup Progress Tracker
 
 ## Description
 
@@ -54,7 +54,7 @@ To get the app up and running on a local environment, do the following:
 - clone the repository with the following command:
 ```bash
 # get app
-$ git clone https://github.com/daylay92/startup-progress-tracker
+$ git clone https://github.com/daylay92/startup-progress-tracker.git
 ```
 - Open the folder of the cloned repository
 - Run the following command at the root of the project:
@@ -75,7 +75,7 @@ $ docker run -p 4500:4500 startup-progress-tracker
 
 ```bash
 # get app
-$ git clone https://github.com/daylay92/startup-progress-tracker
+$ git clone https://github.com/daylay92/startup-progress-tracker.git
 
 # navigate to working directory and add environment variables
 $ cd startup-progress-tracker
@@ -93,7 +93,7 @@ To get the app up and running on a local environment, do the following:
 - clone the repository with the following command:
 ```bash
 # get app
-$ git clone https://github.com/daylay92/startup-progress-tracker
+$ git clone https://github.com/daylay92/startup-progress-tracker.git
 ```
 - Open the folder of the cloned repository
 - Run the following command at the root of the project:
@@ -109,7 +109,7 @@ $ cd startup-progress-tracker && npm run dev
 
 ```bash
 # get app
-$ git clone https://github.com/daylay92/startup-progress-tracker
+$ git clone https://github.com/daylay92/startup-progress-tracker.git
 
 # navigate to working directory and add environment variables
 $ cd startup-progress-tracker

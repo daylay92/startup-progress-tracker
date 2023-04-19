@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "An application that tracks the progress of startups through different phases.",
   "main": "build/index.js",
+  "repository": "https://github.com/daylay92/startup-progress-tracker.git",
   "scripts": {
     "build": "rimraf build && tsc",
     "start": "node ./build/index.js",
