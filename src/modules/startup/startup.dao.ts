@@ -112,7 +112,6 @@ export const completeTask = async (
   let startupProgress = startupProgressRepository.find(
     (startupProgress) => startupProgress.startup === startup
   );
-  console.log(startupProgress);
   if (!startupProgress) {
     startupProgress = new StartupProgress();
     startupProgress.completedPhaseTasks = [task];
