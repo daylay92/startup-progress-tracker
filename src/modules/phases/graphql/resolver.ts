@@ -1,5 +1,5 @@
 import { GraphQLResolveInfo, Kind, GraphQLScalarType } from 'graphql';
-import { getSelectedFields, validate } from '../../../lib';
+import { getCustomizeSelection, validate } from '../../../lib';
 import { Phase, PhaseTask } from '../models';
 import { getOnePhaseTasks, getPhases } from '../phases.dao';
 import {
@@ -29,7 +29,7 @@ export const phaseResolvers = {
       _context: unknown,
       info: GraphQLResolveInfo
     ) => {
-      const selectedField = getSelectedFields<Phase>(info);
+      const selectedField = getCustomizeSelection<Phase>(info);
       return getPhases({ term, select: selectedField });
     },
     getPhase: async (
@@ -38,7 +38,7 @@ export const phaseResolvers = {
       _context: unknown,
       info: GraphQLResolveInfo
     ) => {
-      const selectedField = getSelectedFields<Phase>(info);
+      const selectedField = getCustomizeSelection<Phase>(info);
       const dto = await validate<GetSingleDto<Phase>>(
         {
           id: args.id,
@@ -54,7 +54,7 @@ export const phaseResolvers = {
       _context: unknown,
       info: GraphQLResolveInfo
     ) => {
-      const selectedField = getSelectedFields<PhaseTask>(info);
+      const selectedField = getCustomizeSelection<PhaseTask>(info);
       const dto = await validate<GetSingleDto<PhaseTask>>(
         {
           id: args.id,
@@ -70,7 +70,7 @@ export const phaseResolvers = {
       _context: unknown,
       info: GraphQLResolveInfo
     ) => {
-      const selectedField = getSelectedFields<PhaseTask>(info);
+      const selectedField = getCustomizeSelection<PhaseTask>(info);
       const dto = await validate<GetSingleDto<PhaseTask>>(
         {
           id: args.id,

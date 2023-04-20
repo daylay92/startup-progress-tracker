@@ -9,7 +9,4 @@ export class StartupPhaseProgressBreakdown {
   tasks: StartupTaskBreakdown[];
   completed: boolean;
 }
-export interface StartupPhaseProgress {
-  startup: Startup;
-  phaseBreakdown: StartupPhaseProgressBreakdown[];
-}
+export type StartupPhaseProgress = StartupPhaseProgressBreakdown[];

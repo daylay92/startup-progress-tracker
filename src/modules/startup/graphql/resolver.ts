@@ -1,5 +1,5 @@
 import { GraphQLResolveInfo } from 'graphql';
-import { getSelectedFields, validate } from '../../../lib';
+import { getCustomizeSelection, validate } from '../../../lib';
 import { Startup } from '../models';
 import { getOneStartup, getStartupProgress, getStartups } from '../startup.dao';
 import {
@@ -30,7 +30,7 @@ export const startupResolvers = {
       _context: unknown,
       info: GraphQLResolveInfo
     ) => {
-      const selectedField = getSelectedFields<Startup>(info);
+      const selectedField = getCustomizeSelection<Startup>(info);
       return getStartups({ term, select: selectedField });
     },
     getStartup: async (
@@ -39,7 +39,8 @@ export const startupResolvers = {
       _context: unknown,
       info: GraphQLResolveInfo
     ) => {
-      const selectedField = getSelectedFields<Startup>(info);
+      const selectedField = getCustomizeSelection<Startup>(info);
+      console.log(selectedField);
       const dto = await validate<GetStartupDto>(
         {
           id: args.id,
@@ -115,9 +116,9 @@ export const startupResolvers = {
 
   Startup: {
     progress: async (parent: Omit<Startup, 'progress'> & { progress: StartupPhaseProgress }) =>
-      parent?.progress?.phaseBreakdown
+      parent?.progress?.length
         ? parent.progress
-        : await getStartupProgress(
+        : getStartupProgress(
             getOneStartup({
               id: parent.id,
             }) as Startup

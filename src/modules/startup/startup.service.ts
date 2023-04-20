@@ -71,7 +71,7 @@ export const completePhaseTask = async ({
   const task = getOnePhaseTask({ id: taskId });
   if (!task) throw new NotFoundError('Task does not exist');
   // check if phase of the specific task has been unlocked
-  const { phaseBreakdown } = await getStartupProgress(startup);
+  const phaseBreakdown = await getStartupProgress(startup);
   const unlocked = phaseBreakdown
     .filter(({ order }) => order < task.phase.order)
     .every(({ completed }) => completed);

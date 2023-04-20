@@ -5,7 +5,7 @@ export const startupTypeDef = gql`
   type Startup {
     id: ID!
     name: String!
-    progress: ProgressBreakDown!
+    progress: [StartupPhaseProgressBreakdown!]!
     createdAt: Date
     updatedAt: Date
   }
@@ -24,22 +24,17 @@ export const startupTypeDef = gql`
     completed: Boolean!
   }
 
-  type ProgressBreakDown {
-    startup: Startup!
-    phaseBreadown: [StartupPhaseProgressBreakdown!]!
-  }
-
   type Query {
     getStartups(term: String): [Startup]!
     getStartup(id: ID!): Startup!
-    getStartupProgress(id: ID!): ProgressBreakDown!
+    getStartupProgress(id: ID!): [StartupPhaseProgressBreakdown!]!
   }
 
   type Mutation {
     createStartup(name: String!): Startup!
     removeStartup(id: ID!): Boolean!
     updateStartup(id: ID!, name: String!): Startup!
-    completeTask(taskId: ID!, startupId: ID!): ProgressBreakDown!
-    updoTask(taskId: ID!, startupId: ID!): ProgressBreakDown!
+    completeTask(taskId: ID!, startupId: ID!): [StartupPhaseProgressBreakdown!]!
+    updoTask(taskId: ID!, startupId: ID!): [StartupPhaseProgressBreakdown!]!
   }
 `;

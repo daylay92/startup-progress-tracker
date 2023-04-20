@@ -94,15 +94,14 @@ export const getStartupProgress = async (startup: Startup): Promise<StartupPhase
     },
     [] as StartupPhaseProgressBreakdown[]
   );
-  return Promise.resolve({
-    startup,
-    phaseBreakdown: phases
+  return Promise.resolve(
+    phases
       .map((phase) => ({
         ...phase,
         completed: phase.tasks.every(({ completed }) => completed),
       }))
-      .sort((a, b) => a.order - b.order),
-  });
+      .sort((a, b) => a.order - b.order)
+  );
 };
 
 export const completeTask = async (

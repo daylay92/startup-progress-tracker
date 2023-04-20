@@ -36,6 +36,7 @@ export const initApolloServer = async (appServer: Application) => {
     ],
     introspection: true,
     formatError(_, error: ApplicationError) {
+      routeLogger.error(_);
       return {
         message: error.message,
         code: error.extensions?.code,

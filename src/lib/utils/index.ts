@@ -14,8 +14,13 @@ export const addDates = <T extends BaseModel>(data: T, updateOnly = false): T =>
   return data;
 };
 
-export const getSelectedFields = <T>(graphQLInfo: GraphQLResolveInfo): (keyof T)[] => {
+const getSelectedFields = <T>(graphQLInfo: GraphQLResolveInfo): (keyof T)[] => {
   return (graphQLInfo?.fieldNodes[0]?.selectionSet?.selections?.map(
     (field) => (field as FieldNode).name.value
   ) || []) as (keyof T)[];
+};
+
+export const getCustomizeSelection = <T>(graphQLInfo: GraphQLResolveInfo): (keyof T)[] => {
+  const selectedField = getSelectedFields<T>(graphQLInfo);
+  return [...new Set(['id' as keyof T, ...selectedField])]; // added id to make sure that the id can always be used for sub queries in custom types
 };
