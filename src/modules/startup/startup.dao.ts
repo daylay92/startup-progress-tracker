@@ -112,6 +112,7 @@ export const completeTask = async (
   let startupProgress = startupProgressRepository.find(
     (startupProgress) => startupProgress.startup === startup
   );
+  console.log(startupProgress);
   if (!startupProgress) {
     startupProgress = new StartupProgress();
     startupProgress.completedPhaseTasks = [task];
@@ -124,6 +125,7 @@ export const completeTask = async (
       (completedTask) => completedTask === task
     );
     if (completed) throw new ConflictError('Task already completed');
+    startupProgress.completedPhaseTasks.push(task);
   }
   startupProgressRepository.push(startupProgress);
   return getStartupProgress(startup);
